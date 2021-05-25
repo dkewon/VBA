@@ -1,0 +1,18 @@
+Private Sub Workbook_Open()
+
+    Dim lastDate As Date
+    
+'   Go to the sheet
+    Sheets("Sheet1").Activate
+    
+'   Check the first value
+    lastDate = Range("A2")
+    If lastDate < Date Then
+        Do Until lastDate = Date
+            Rows(2).Insert
+            lastDate = lastDate + 1
+            Range("A2") = lastDate
+        Loop
+    End If
+    
+End Sub
